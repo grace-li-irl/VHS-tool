@@ -87,7 +87,7 @@ COMPANY_RULES = {
         "field_map": {
             "证件号码": (["证件编号", "证件号码", "证件号"], lambda x: to_text(remove_star(x))),
             "部门": (["分公司", "部门"], pass_through),
-            "客户ID": (["客户编码", "客户号"], add_prefix("MET")),
+            "客户ID": (["客户编码", "客户号","客户ID"], lambda x: x if str(x).upper().startswith("MET") else f"MET{x}"),
             "员工姓名": (["客户姓名", "员工姓名", "姓名"], remove_spaces),
             "性别": (["性别", "客户性别"], pass_through),
             "生日": (["出生日期", "生日"], pass_through),
